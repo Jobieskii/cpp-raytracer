@@ -1,6 +1,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#define BOUNCES 6
+#define SAMPLES_PER_PIXEL 40
+
 #include <cmath>
 #include <iostream>
 #include <limits>
