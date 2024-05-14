@@ -1,8 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define BOUNCES 6
-#define SAMPLES_PER_PIXEL 40
+constexpr int BOUNCES = 6;
+constexpr int SAMPLES_PER_PIXEL = 30;
 
 #include <cmath>
 #include <iostream>

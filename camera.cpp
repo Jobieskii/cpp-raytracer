@@ -2,6 +2,7 @@
 #include "color.h"
 #include "config.h"
 #include "material.h"
+#include "vec3.h"
 
 vec3 sample_square() {
     // Returns the vector to a random point in the [-.5,-.5]-[+.5,+.5] unit
@@ -30,9 +31,13 @@ void camera::render(const hittable& world) {
     std::clog << "Done" << std::endl;
 }
 
-color sky_color(vec3 dir) {
-    double a = (dir.y() + 1.0) * 0.5;
-    return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
+color sky_color(vec3 unit_dir) {
+    double a = (unit_dir.y() + 1.0) * 0.5;
+    vec3 sun = unit_vector(vec3(3, 4, -1));
+    if (dot(unit_dir, sun) > 0.9) {
+        return color(1, 1, 1);
+    }
+    return (1.0 - a) * color(0.1, 0.1, 0.1) + a * color(0.05, 0.07, 0.1);
 }
 
 color camera::ray_color(const ray& r, const hittable& world,
