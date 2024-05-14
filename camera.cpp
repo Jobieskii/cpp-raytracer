@@ -31,7 +31,7 @@ color camera::ray_color(const ray& r, const hittable& world, int max_depth) cons
         return color(0, 0, 0);
     }
     hit_record hit_rec;
-    bool hit = world.hit(r, interval(0, infinity), hit_rec);
+    bool hit = world.hit(r, interval(0.001, infinity), hit_rec);
     if (hit) {
         vec3 direction = vec3::random_on_hemisphere(hit_rec.normal);
         return 0.5 * ray_color(ray(hit_rec.p, direction), world, max_depth - 1);
