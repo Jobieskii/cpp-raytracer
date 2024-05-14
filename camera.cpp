@@ -29,6 +29,12 @@ void camera::render(const hittable& world) {
     }
     std::clog << "Done" << std::endl;
 }
+
+color sky_color(vec3 dir) {
+    double a = (dir.y() + 1.0) * 0.5;
+    return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
+}
+
 color camera::ray_color(const ray& r, const hittable& world,
                         int max_depth) const {
     if (max_depth <= 0) {
@@ -44,6 +50,5 @@ color camera::ray_color(const ray& r, const hittable& world,
         return color(0, 0, 0);
     }
     vec3 unit = unit_vector(r.direction());
-    double a = (unit.y() + 1.0) * 0.5;
-    return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
+    return sky_color(unit);
 }
