@@ -6,6 +6,7 @@
 
 #include "hittable.h"
 #include "vec3.h"
+#include <atomic>
 
 class camera {
   public:
@@ -34,6 +35,8 @@ class camera {
     point3 camera_center;
     static constexpr double pixel_samples_scale = 1.0 / SAMPLES_PER_PIXEL;
 
+    std::vector<color> render_line(const hittable& world, int y) const;
+    void task(const hittable& world, std::vector<color>& image_colors, std::atomic_int& next_line) const;
     color ray_color(const ray& r, const hittable& world, int max_depth) const;
 };
 

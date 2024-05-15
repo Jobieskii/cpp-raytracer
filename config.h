@@ -2,7 +2,9 @@
 #define CONFIG_H
 
 constexpr int BOUNCES = 6;
-constexpr int SAMPLES_PER_PIXEL = 30;
+constexpr int SAMPLES_PER_PIXEL = 120;
+
+constexpr int THREADS = 4;
 
 #include <cmath>
 #include <iostream>

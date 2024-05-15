@@ -5,6 +5,8 @@
 #include "vec3.h"
 
 #include <iostream>
+#include <ostream>
+#include <vector>
 
 using color = vec3;
 
@@ -35,4 +37,10 @@ inline void write_color(std::ostream& out, const color& pixel_color) {
     out << rbyte << ' ' << gbyte << ' ' << bbyte << '\n';
 }
 
+inline void write_colors_buf(std::ostream& out, const std::vector<color> image_colors, int image_width, int image_height) {
+    std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
+    for (const color& color : image_colors) {
+        write_color(out, color);
+    }
+}
 #endif
