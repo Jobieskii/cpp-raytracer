@@ -19,11 +19,11 @@ int main() {
     // World 
     auto sp = make_shared<sphere>(sphere(point3(0, 0, -1), 0.5, mirror));
     auto sp2 = make_shared<sphere>(sphere(point3(1, -0.25, -2), 0.5, mirror2));
-    auto sp3 = make_shared<sphere>(sphere(point3(-1, 0, -0.5), 0.5, red));
+    auto sp3 = make_shared<sphere>(sphere(point3(-1, 0.25, -0.5), 0.5, red));
     auto ground = make_shared<sphere>(sphere(point3(0, -150.5, -1), 150, ground_mat));
     hittable_list world = {sp, sp2, sp3, ground};
     // Render
 
-    camera camera {800, 16.0/9.0, 2.5, point3(0, 0, 2)};
+    camera camera {1600, 16.0/9.0, 2.5, point3(0, 0, 2)};
     camera.render(world);
 }

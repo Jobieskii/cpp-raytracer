@@ -40,7 +40,7 @@ void camera::task(const hittable& world, std::vector<color>& image_colors, std::
     }
 }
 
-using std::chrono_literals::operator""ms;
+using namespace std::chrono_literals;
 
 void camera::render(const hittable& world) {
     std::atomic_int line_counter = 0;
