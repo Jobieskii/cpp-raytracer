@@ -13,4 +13,4 @@ Build:
 Run:
 `$ ./build/raytracer > img.ppm` 
 
-![example](img/example.ppm)
+![example](img/example.png)
